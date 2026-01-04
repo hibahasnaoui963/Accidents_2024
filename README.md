@@ -14,7 +14,8 @@ Ce dépôt illustre une démarche complète de Data Science, de la fusion de don
 Le projet est découpé en trois notebooks structurés selon la méthodologie CRISP-DM :
 
 * **Lien du jeu de données :** [Bases de données annuelles des accidents corporels (2024)](https://www.data.gouv.fr/fr/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annee-2024/)
-* **Fichiers nécessaires :** * `caracteristiques-2024.csv`
+* **Fichiers nécessaires :** 
+    * `caracteristiques-2024.csv`
     * `usagers-2024.csv`
 
 > **Note :** Une fois téléchargés, ces fichiers doivent être placés dans le dossier `data/` à la racine du projet.
@@ -54,6 +55,7 @@ $$Recall = \frac{TP}{TP + FN}$$
 ---
 
 ##  Installation
-1. Cloner le projet :
+
+Cloner le projet :
    ```bash
    git clone [https://github.com/hibahasnaoui963/Accidents_2024.git](https://github.com/hibahasnaoui963/Accidents_2024.git)
