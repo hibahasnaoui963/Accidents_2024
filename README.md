@@ -43,8 +43,8 @@ Considérations Éthiques
 L'analyse des données respecte l'anonymat des usagers conformément au RGPD. Les conclusions sur le profil des usagers (comme le sexe) sont destinées à des fins de prévention ciblée et ne doivent en aucun cas servir à la stigmatisation ou à des pratiques discriminatoires.
 Installation et Utilisation
 
-    Cloner le dépôt : git clone https://github.com/hibahasnaoui963/Accidents_2024.git
+Cloner le dépôt : git clone https://github.com/hibahasnaoui963/Accidents_2024.git
 
-    Installer les bibliothèques : pip install -r requirements.txt
+Installer les bibliothèques : pip install -r requirements.txt
 
-    Exécuter les notebooks : Ouvrir les fichiers dans VS Code ou Jupyter Lab dans l'ordre numérique.
+Exécuter les notebooks : Ouvrir les fichiers dans VS Code ou Jupyter Lab dans l'ordre numérique.
