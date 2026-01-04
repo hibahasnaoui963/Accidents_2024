@@ -1,50 +1,59 @@
-# Accidents_2024
-Prédiction de la Gravité des Accidents de la Route (France 2024)
-Présentation du Projet
+# Prédiction de la gravité des accidents de la route (France 2024)
 
-Ce projet analyse les facteurs influençant la gravité des accidents corporels de la circulation en France pour l'année 2024. L'objectif est de construire un modèle de Machine Learning capable de prédire si un accident sera Grave (Tué ou Hospitalisé) ou Léger (Indemne ou Blessé léger).
+## Présentation du projet
+Ce projet d'analyse de données traite de la sécurité routière en France pour l'année 2024. L'objectif principal est de construire un modèle de **Machine Learning** capable de prédire la gravité d'un accident (Léger vs Grave) à partir de caractéristiques environnementales et socio-démographiques.
 
-Ce travail démontre ma capacité à gérer un pipeline complet de Data Science : de l'ingénierie des données à l'interprétation statistique des résultats.
-Structure du Projet
+##  Source des Données
+Les données utilisées proviennent de la plateforme **Open Data du gouvernement français**. Elles concernent les accidents corporels de la circulation routière pour l'année 2024.
 
-Le projet est découpé en trois étapes méthodologiques :
-1. Préparation des Données (01_import_preparation.ipynb)
+Ce dépôt illustre une démarche complète de Data Science, de la fusion de données brutes à l'interprétation de modèles statistiques.
 
-    Fusion des tables : Croisement des fichiers "Caractéristiques" et "Usagers" via l'identifiant d'accident.
+---
 
-    Nettoyage : Suppression des colonnes ayant plus de 20% de valeurs manquantes pour garantir la fiabilité statistique.
+##  Structure du projet (Pipeline)
+Le projet est découpé en trois notebooks structurés selon la méthodologie CRISP-DM :
 
-    Targeting : Création de la variable cible binaire target à partir de la colonne grav.
+* **Lien du jeu de données :** [Bases de données annuelles des accidents corporels (2024)](https://www.data.gouv.fr/fr/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annee-2024/)
+* **Fichiers nécessaires :** * `caracteristiques-2024.csv`
+    * `usagers-2024.csv`
 
-2. Analyse Exploratoire - EDA (02_analyse_exploratoire.ipynb)
+> **Note :** Une fois téléchargés, ces fichiers doivent être placés dans le dossier `data/` à la racine du projet.
+### 1. Préparation des données [`01_import_prep.ipynb`]
+* **Fusion des tables** : Croisement des fichiers "Caractéristiques" et "Usagers".
+* **Nettoyage** : Traitement des valeurs manquantes (seuil de suppression à 20%) pour assurer la qualité du dataset.
+* **Targeting** : Création de la variable cible binaire `target` (0: Léger, 1: Grave) à partir de la variable `grav`.
 
-    Visualisation : Étude de l'impact du sexe, de la luminosité et du milieu (agglomération) sur la gravité.
+### 2. Analyse exploratoire - EDA [`02_analyse_exploratoire.ipynb`]
+* **Visualisation** : Analyse de l'impact du sexe et de la luminosité sur le taux de gravité.
+* **Validation Statistique** : Réalisation d'un **Test du $\chi^2$ d'indépendance** confirmant un lien significatif entre le genre et la gravité (p-value < 0,05).
 
-    Validation Statistique : Utilisation du Test du χ2 d'indépendance pour confirmer les corrélations observées (p-value < 0,05).
+### 3. Modélisation [`03_modelisation.ipynb`]
+* **Algorithme** : Utilisation de la **Régression logistique**.
+* **Optimisation** : Correction du déséquilibre de classe via le paramètre `class_weight='balanced'`.
+* **Interprétation** : Analyse des **Odds Ratios** pour identifier les facteurs de risque dominants.
 
-3. Modélisation (03_modelisation.ipynb)
+---
 
-    Algorithme : Entraînement d'une Régression Logistique.
+##  Modélisation et résultats
 
-    Optimisation : Gestion du déséquilibre de classe via le paramètre class_weight='balanced' pour améliorer le Rappel (Recall).
+### Approche mathématique
+Le modèle utilise la fonction sigmoïde pour estimer la probabilité de gravité :
+$$P(target=1|X) = \frac{1}{1 + e^{-(\beta_0 + \sum \beta_i X_i)}}$$
 
-    Interprétation : Calcul des Odds Ratios pour quantifier l'influence de chaque variable.
+### Performance du modèle
+La priorité a été donnée au **Rappel (Recall)** afin de détecter un maximum d'accidents graves, réduisant ainsi les faux négatifs critiques dans un contexte de sécurité publique.
 
-Résultats et Modélisation Mathématique
+$$Recall = \frac{TP}{TP + FN}$$
 
-Le modèle repose sur la fonction sigmoïde pour estimer la probabilité de gravité :
-P(target=1∣X)=1+e−(β0​+∑βi​Xi​)1​
-Métrique de performance clé
+---
 
-Pour ce projet de sécurité routière, nous avons privilégié le Recall afin de minimiser les faux négatifs (accidents graves non détectés) :
-Recall=TP+FNTP​
-Considérations Éthiques
+##  Éthique et confidentialité
+* Les données utilisées sont issues de l'Open Data gouvernemental et sont totalement anonymisées.
+* L'analyse statistique (notamment sur le sexe) est menée à des fins de **prévention routière** et ne doit pas servir à des pratiques discriminatoires.
 
-L'analyse des données respecte l'anonymat des usagers conformément au RGPD. Les conclusions sur le profil des usagers (comme le sexe) sont destinées à des fins de prévention ciblée et ne doivent en aucun cas servir à la stigmatisation ou à des pratiques discriminatoires.
-Installation et Utilisation
+---
 
-Cloner le dépôt : git clone https://github.com/hibahasnaoui963/Accidents_2024.git
-
-Installer les bibliothèques : pip install -r requirements.txt
-
-Exécuter les notebooks : Ouvrir les fichiers dans VS Code ou Jupyter Lab dans l'ordre numérique.
+##  Installation
+1. Cloner le projet :
+   ```bash
+   git clone [https://github.com/hibahasnaoui963/Accidents_2024.git](https://github.com/hibahasnaoui963/Accidents_2024.git)
